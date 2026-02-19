@@ -1,0 +1,17 @@
+# Pruned DB query keys used by current CaseService scope
+# Keep key names stable for DataBaseUtility.getQuery(...) calls
+query_case_applicant_detail=Select * from sample_app_db.case_applicant_detail where case_code=\"%s\";
+query_case_document_ignore=Select * from sample_app_db.case_document_ignore where case_code=\"%s\";
+query_res_address_proof=Select * from sample_app_db.case_document where document_category='res_address_proof' and case_code=\"%s\";
+query_kyc=Select * from sample_app_db.case_document where document_category='kyc' and case_code=\"%s\";
+query_company_kyc=Select * from sample_app_db.case_document where document_category='company_kyc' and case_code=\"%s\";
+query_case_doc_by_RawDocId=Select * from sample_app_db.case_document where raw_document_id =\"%s\";
+query_case_raw_document=Select * from sample_app_db.case_raw_document where lead_code=\"%s\" order by created_at desc;
+query_unverified_case_document = Select * from sample_app_db.case_document where isdeleted='0' and status='UNVERIFIED' and case_code=\"%s\";
+query_case_doc_by_docCode = Select * from sample_app_db.case_document where code=\"%s\";
+query_custom_required_document = Select * from sample_app_db.custom_required_documents where case_code=\"%s\";    
+update_query_legStat_partnership = Update sample_app_db.case_business_detail set legal_status='Partnership' where case_code=\"%s\";
+update_query_legStat_propritorship = Update sample_app_db.case_business_detail set legal_status='Proprietorship' where case_code=\"%s\";
+update_query_legStat_pvtLtd = Update sample_app_db.case_business_detail set legal_status='Private Limited' where case_code=\"%s\";
+update_query_caseAmt_2100000 = Update sample_app_db.case_application set amount='2100000' where code=\"%s\";
+update_query_Gender_Female = Update sample_app_db.case_applicant_detail set Gender='Female' where case_code=\"%s\";

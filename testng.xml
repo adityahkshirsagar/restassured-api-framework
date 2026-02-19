@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://example.invalid">
+<suite name="Case Service" >
+  <test name="Regression Test" >
+    <classes >
+      <class name="CaseService.CasesUpload"/>
+      <class name="CaseService.PendingCase"/>
+      <class name="CaseService.CaseConfig"/>
+      <class name="CaseService.RawCase"/>
+      <class name="CaseService.CaseBucket"/>
+      <class name="CaseService.CaseCloning"/>
+      <class name="CaseService.RequiredCase"/>
+      <class name="CaseService.BulkCaseUpload"/>     
+    </classes>
+  </test>
+</suite> <!-- Suite -->
