@@ -1,7 +1,6 @@
 package GenericUtilities;
 
 /**
- * @author :Mahesh Narvane
  * @Description: used to store Endpoint of all the APIs
  */
 

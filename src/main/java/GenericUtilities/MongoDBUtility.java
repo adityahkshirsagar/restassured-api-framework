@@ -5,7 +5,7 @@ import org.bson.Document;
 
 public class MongoDBUtility {
 	
-	static	String Mongo_username="automation_jenkins_user";
+	static	String Mongo_username="<REDACTED_USERNAME>";
 	static  String Mongo_password="<REDACTED_PASSWORD>";
 	 private static final String CONNECTION_STRING = 
 			 "mongodb+srv://example.invalid";

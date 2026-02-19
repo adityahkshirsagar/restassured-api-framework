@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import GenericUtilities.DataBaseUtility;
 import GenericUtilities.EndPoint;
 import GenericUtilities.Filepath;
 import GenericUtilities.BaseClass;
@@ -19,7 +20,6 @@ import io.restassured.response.Response;
  * This class is used to perform regression testing on Pending Case API.
  * 
  * @Endpoint /pending
- * @author Aditya K.
  */
 
 @Listeners(Listner.ListnerClass.class)

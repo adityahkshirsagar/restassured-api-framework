@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import org.testng.Assert;
 import com.aventstack.extentreports.Status;
 import GenericUtilities.BaseClass;
+import GenericUtilities.DataBaseUtility;
 import GenericUtilities.EndPoint;
 import GenericUtilities.Filepath;
 import Listner.ListnerClass;
@@ -19,7 +20,6 @@ import java.io.File;
 
 /**
  * This class is used to perform regression testing on Case Upload API.
- * @author Aditya K.
  */
 
 @Listeners(Listner.ListnerClass.class)
@@ -52,7 +52,7 @@ public class CasesUpload extends BaseClass{
 	        query_case_applicant_detail = DataBaseUtility.getQuery("query_case_applicant_detail", case_code);
 	        String lead_code = DataBaseUtility.returnValueByColumnname(query_case_applicant_detail, "customer_code");
 	        String mobile_no=DataBaseUtility.returnValueByColumnname(query_case_applicant_detail, "mobile_no");
-	        ListnerClass.reportLog("Description - Custom case code provided by user from jenkins <br>Testcase Type - Pre condition<br>case code - "+case_code+"<br>Lead code - "+lead_code+"<br>Mobile No - "+mobile_no);
+	        ListnerClass.reportLog("Description - Custom case code provided by CI input <br>Testcase Type - Pre condition<br>case code - "+case_code+"<br>Lead code - "+lead_code+"<br>Mobile No - "+mobile_no);
 			}
 	}
 	
