@@ -39,9 +39,9 @@ public class BulkCaseUpload extends BaseClass {
 	@Test (dependsOnMethods = "GetcaseCode",priority=1)
 	public void DocBulkUpload() throws Throwable
 	{
-		setBaseURI("documents");
+		setBaseURI("casefiles");
 
-		ListnerClass.reportLog("Description - Upload document in bulk manner for the application <br>Testcase Type - Positive<br>API Endpoint - /documentservice/bulk-upload");
+		ListnerClass.reportLog("Description - Upload document in bulk manner for the application <br>Testcase Type - Positive<br>API Endpoint - /caseservice/bulk-upload");
 
 		File filepath_1= new File(Filepath.Aadhar);
 		File filepath_2= new File(Filepath.Aadhar);
@@ -56,7 +56,7 @@ public class BulkCaseUpload extends BaseClass {
 				.multiPart("document_category", "bank-statement")
 				.multiPart("document_type", "bank_statement_current_6")
 				.header("content-type","multipart/form-data")
-				.when().post(EndPoint.DOCUMENTBULKUPLOAD);
+				.when().post(EndPoint.CASEFILEBULKUPLOAD);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -71,4 +71,6 @@ public class BulkCaseUpload extends BaseClass {
 	}
 
 }
+
+
 

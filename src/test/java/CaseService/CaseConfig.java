@@ -29,14 +29,14 @@ public class CaseConfig extends BaseClass {
 	 */
 
 	@Test (dependsOnMethods = "GetcaseCode", priority=1)
-	public void GET_DocumentConfig() {
+	public void GET_CASEFILECONFIG() {
 
 		ListnerClass.reportLog("Description - Get document config for the application <br>Testcase Type - Positive<br>API Endpoint - /v1/config");
 
 		Response response = RestAssured.given()
 				.param("case_code", case_code)
 				.param("source", "LOS")
-				.when().get(EndPoint.DOCUMENTCONFIG);
+				.when().get(EndPoint.CASEFILECONFIG);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -63,7 +63,7 @@ public class CaseConfig extends BaseClass {
 	 */
 
 	@Test (dependsOnMethods = "GetcaseCode", priority=2)
-	public void GET_DocumentConfigV1() {
+	public void GET_CASEFILECONFIGV1() {
 
 		ListnerClass.reportLog("Description - Get document config V1 for the application consumed in CJP <br>Testcase Type - Positive<br>API Endpoint - /v1/config");
 
@@ -75,7 +75,7 @@ public class CaseConfig extends BaseClass {
 				.body(ReqBody)
 				.header("content-type","application/json" )
 				.header("internal-access-token",System.getenv("m2m_token"))
-				.when().post(EndPoint.DOCUMENTCONFIGV1);
+				.when().post(EndPoint.CASEFILECONFIGV1);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -102,13 +102,13 @@ public class CaseConfig extends BaseClass {
 	 */
 
 	@Test (dependsOnMethods = "GetcaseCode", priority=3)
-	public void GET_DocumentLookup() {
+	public void GET_CASEFILELOOKUP() {
 
 		ListnerClass.reportLog("Description - Get document lookup for the application <br>Testcase Type - Positive<br>API Endpoint - /lookup");
 
 		Response response = RestAssured.given()
 				.param("source", "LOS")
-				.when().get(EndPoint.DOCUMENTLOOKUP);
+				.when().get(EndPoint.CASEFILELOOKUP);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -131,4 +131,5 @@ public class CaseConfig extends BaseClass {
 	}
 
 }
+
 

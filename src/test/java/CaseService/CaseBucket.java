@@ -35,13 +35,13 @@ public class CaseBucket extends BaseClass {
 	@Test  (priority=1, dependsOnMethods = "GetcaseCode")
 	public void GET_UnverifiedDocuments() throws Throwable {
 
-		setBaseURI("documents");
-		ListnerClass.reportLog("Description - GET unverified document for the case application <br>Testcase Type - Positive<br>API Endpoint - /documentservice/unverified");
+		setBaseURI("casefiles");
+		ListnerClass.reportLog("Description - GET unverified document for the case application <br>Testcase Type - Positive<br>API Endpoint - /caseservice/unverified");
 
 		Response response = RestAssured.given()
 				.param("case_code", case_code)
 				.header("internal-access-token","Bearer <REDACTED_TOKEN>")
-				.when().get(EndPoint.DOCUMENTGETUNVERIFIED);
+				.when().get(EndPoint.CASEFILEGETUNVERIFIED);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -64,7 +64,7 @@ public class CaseBucket extends BaseClass {
 	@Test (priority = 2, dependsOnMethods = "GetcaseCode")
 	public void PUT_MovetoDescrepant() throws Throwable
 	{
-		setBaseURI("documents");
+		setBaseURI("casefiles");
 		ListnerClass.reportLog("Description - Move document from Unverified to Descrepant bucket <br>Testcase Type - Positive<br>API Endpoint - /doc/{DcoCode}/?multi_map_id=0");
 		query_unverified_case_document = DataBaseUtility.getQuery("query_unverified_case_document", case_code);
 		unverified_doc_code_1 = DataBaseUtility.returnValueByColumnname(query_unverified_case_document, "code");
@@ -86,7 +86,7 @@ public class CaseBucket extends BaseClass {
 	            .contentType("application/json")
 	            .body(payload.toString())
 	            .header("internal-access_token", System.getenv("m2m_token"))
-	            .when().put(EndPoint.DOCUMENTBUCKETMOVEPUT, UnverifiedCode_1);
+	            .when().put(EndPoint.CASEFILEBUCKETMOVE, UnverifiedCode_1);
 
         String query_case_doc_by_docCode = DataBaseUtility.getQuery("query_case_doc_by_docCode", unverified_doc_code_1);
 		String docCodeStatus = DataBaseUtility.returnValueByColumnname(query_case_doc_by_docCode, "Status");
@@ -134,7 +134,7 @@ public class CaseBucket extends BaseClass {
 	            .contentType("application/json")
 	            .body(payload.toString())
 	            .header("internal-access_token", System.getenv("m2m_token"))
-	            .when().put(EndPoint.DOCUMENTBUCKETMOVEPUT, UnverifiedCode_2);
+	            .when().put(EndPoint.CASEFILEBUCKETMOVE, UnverifiedCode_2);
 
         String query_case_doc_by_docCode = DataBaseUtility.getQuery("query_case_doc_by_docCode", unverified_doc_code_2);
 		String docCodeStatus = DataBaseUtility.returnValueByColumnname(query_case_doc_by_docCode, "Status");
@@ -157,12 +157,12 @@ public class CaseBucket extends BaseClass {
 	@Test (priority=4)
 	public void GET_VerifiedDocuments() {
 
-		ListnerClass.reportLog("Description - GET Verified document uploaded for the application. <br>Testcase Type - Positive<br>API Endpoint - /v1/verified-documents");
+		ListnerClass.reportLog("Description - GET Verified document uploaded for the application. <br>Testcase Type - Positive<br>API Endpoint - /v1/verified-files");
 
 		Response response = RestAssured.given()
 				.param("case_code", case_code)
 				.header("internal-access-token",System.getenv("m2m_token"))
-				.when().get(EndPoint.DOCUMENTGETVERIFIED);
+				.when().get(EndPoint.CASEFILEGETVERIFIED);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -190,7 +190,7 @@ public class CaseBucket extends BaseClass {
 	            .contentType("application/json")
 	            .body(payload.toString())
 	            .header("internal-access_token", System.getenv("m2m_token"))
-	            .when().delete(EndPoint.DOCUMENTBUCKETMOVEPUT, UnverifiedCode_1);
+	            .when().delete(EndPoint.CASEFILEBUCKETMOVE, UnverifiedCode_1);
 
         JsonPath jp = response.jsonPath();
 		String MessageStateUpdate = jp.getString("message");
@@ -210,12 +210,12 @@ public class CaseBucket extends BaseClass {
 	@Test (priority=6)
 	public void GET_DeletedDocuments() {
 
-		ListnerClass.reportLog("Description - GET deleted document for the case application <br>Testcase Type - Positive<br>API Endpoint - /documentservice/deleted");
+		ListnerClass.reportLog("Description - GET deleted document for the case application <br>Testcase Type - Positive<br>API Endpoint - /caseservice/deleted");
 
 		Response response = RestAssured.given()
 				.param("case_code", case_code)
 				.header("internal-access-token",System.getenv("m2m_token"))
-				.when().get(EndPoint.DOCUMENTGETDELETED);
+				.when().get(EndPoint.CASEFILEGETDELETED);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -230,4 +230,6 @@ public class CaseBucket extends BaseClass {
 		}
 	}
 }
+
+
 

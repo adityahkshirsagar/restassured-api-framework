@@ -47,7 +47,7 @@ public class RequiredCase extends BaseClass {
 		Response response = RestAssured.given()
 				.body(ReqBody)
 				.header("content-type","application/json" )
-				.when().post(EndPoint.DOCUMENTREQUIRED);
+				.when().post(EndPoint.CASEFILEREQUIRED);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -90,8 +90,8 @@ public class RequiredCase extends BaseClass {
 
 		Response response = RestAssured.given()
 				.body(ReqBody)
-				.header("content-type","application/json" )//	            .log().all() // Log request and response details
-				.when().post(EndPoint.DOCUMENTREQUIRED);
+				.header("content-type", "application/json")
+				.when().post(EndPoint.CASEFILEREQUIRED);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -147,7 +147,7 @@ public class RequiredCase extends BaseClass {
 		Response response = RestAssured.given()
 				.body(payload.toString())
 				.header("content-type","application/json" )
-				.when().post(EndPoint.DOCUMENTREQUIREDBULK);
+				.when().post(EndPoint.CASEFILEREQUIREDBULK);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -185,7 +185,7 @@ public class RequiredCase extends BaseClass {
 		Response response = RestAssured.given()
 				.body(reqBody)
 				.header("content-type", "application/json")
-				.when().post(EndPoint.DOCUMENTREQUIRED);
+				.when().post(EndPoint.CASEFILEREQUIRED);
 
 		JsonPath jp = response.jsonPath();
 		Assert.assertNotNull(jp.get("success"), "Missing 'success' in response");
@@ -202,7 +202,7 @@ public class RequiredCase extends BaseClass {
 		Response response = RestAssured.given()
 				.body(reqBody)
 				.header("content-type", "application/json")
-				.when().post(EndPoint.DOCUMENTREQUIRED);
+				.when().post(EndPoint.CASEFILEREQUIRED);
 
 		Assert.assertTrue(response.statusCode() == 400 || response.statusCode() == 422,
 				"Expected validation failure when case_code is missing");
@@ -220,11 +220,12 @@ public class RequiredCase extends BaseClass {
 				.body(reqBody)
 				.header("content-type", "application/json")
 				.header("Authorization", "Bearer invalid_token")
-				.when().post(EndPoint.DOCUMENTREQUIRED);
+				.when().post(EndPoint.CASEFILEREQUIRED);
 
 		Assert.assertTrue(response.statusCode() == 401 || response.statusCode() == 403,
 				"Expected 401/403 for invalid token");
 	}
 
 }
+
 

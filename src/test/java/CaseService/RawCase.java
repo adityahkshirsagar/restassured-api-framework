@@ -38,14 +38,14 @@ public class RawCase extends BaseClass {
 	@Test (dependsOnMethods = "GetcaseCode", priority=1)
 	public void POST_RawDocument() {
 
-		ListnerClass.reportLog("Description - Upload raw document for the application <br>Testcase Type - Positive<br>API Endpoint - /documentservice/raw");
+		ListnerClass.reportLog("Description - Upload raw document for the application <br>Testcase Type - Positive<br>API Endpoint - /caseservice/raw");
 		File filepath= new File(Filepath.Aadhar);
 		Response response = RestAssured.given()
 				.multiPart("file",filepath)
 				.multiPart("case_code", case_code)
 				.multiPart("source", "emailservice")
 				.header("content-type","multipart/form-data")
-				.when().post(EndPoint.DOCUMENTUPLOADRAW);
+				.when().post(EndPoint.CASEFILEUPLOADRAW);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -78,11 +78,11 @@ public class RawCase extends BaseClass {
 	@Test (dependsOnMethods = "POST_RawDocument", priority=2)
 	public void GET_RawDocument() {
 
-		ListnerClass.reportLog("Description - GET raw document uploaded for the application (lead_code) and consumed on LOS <br>Testcase Type - Positive<br>API Endpoint - /documentservice/raw");
+		ListnerClass.reportLog("Description - GET raw document uploaded for the application (lead_code) and consumed on LOS <br>Testcase Type - Positive<br>API Endpoint - /caseservice/raw");
 
 		Response response = RestAssured.given()
 				.param("case_code", case_code)
-				.when().get(EndPoint.DOCUMENTUPLOADRAW);
+				.when().get(EndPoint.CASEFILEUPLOADRAW);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -112,7 +112,7 @@ public class RawCase extends BaseClass {
 	@Test (dependsOnMethods = "POST_RawDocument", priority=3)
 	public void POST_MapDocumentUnverified() {
 
-		ListnerClass.reportLog("Description - Raw document mapping to unverified bucket. <br>Testcase Type - Positive<br>API Endpoint - /documentservice/map");
+		ListnerClass.reportLog("Description - Raw document mapping to unverified bucket. <br>Testcase Type - Positive<br>API Endpoint - /caseservice/map");
 
 		Map<String, Object> ReqBody = new HashMap<>();
 		ReqBody.put("case_code", case_code);
@@ -126,7 +126,7 @@ public class RawCase extends BaseClass {
 		Response response = RestAssured.given()
 				.body(ReqBody)
 				.header("content-type","application/json" )
-				.when().post(EndPoint.DOCUMENTMAP);
+				.when().post(EndPoint.CASEFILEMAP);
 
 		JsonPath jp = response.jsonPath();
 		String SuccValue = jp.getString("success");
@@ -162,7 +162,7 @@ public class RawCase extends BaseClass {
 	@Test (dependsOnMethods = "GetcaseCode", priority=4)
 	public void POST_MapDocumentVerified() {
 
-		ListnerClass.reportLog("Description - Raw document mapping to verified bucket. <br>Testcase Type - Positive<br>API Endpoint - /documentservice/map");
+		ListnerClass.reportLog("Description - Raw document mapping to verified bucket. <br>Testcase Type - Positive<br>API Endpoint - /caseservice/map");
 		File filepath= new File(Filepath.Aadhar);
 
 		Response response_1 = RestAssured.given()
@@ -170,7 +170,7 @@ public class RawCase extends BaseClass {
 				.multiPart("case_code", case_code)
 				.multiPart("source", "emailservice")
 				.header("content-type","multipart/form-data")
-				.when().post(EndPoint.DOCUMENTUPLOADRAW);
+				.when().post(EndPoint.CASEFILEUPLOADRAW);
 		        JsonPath jp_1 = response_1.jsonPath();
 		 		String RawDocIdinRespforVerified = jp_1.getString("data.id");
 
@@ -186,7 +186,7 @@ public class RawCase extends BaseClass {
 		Response response = RestAssured.given()
 				.body(ReqBody)
 				.header("content-type","application/json" )
-				.when().post(EndPoint.DOCUMENTMAP);
+				.when().post(EndPoint.CASEFILEMAP);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -223,7 +223,7 @@ public class RawCase extends BaseClass {
 	@Test (dependsOnMethods = "GetcaseCode", priority=5)
 	public void POST_MapExistingRawDocument() {
 
-		ListnerClass.reportLog("Description - Map raw document for existing document_category is not allowed with resposne 'duplicate'. <br>Testcase Type - Negative<br>API Endpoint - /documentservice/map");
+		ListnerClass.reportLog("Description - Map raw document for existing document_category is not allowed with resposne 'duplicate'. <br>Testcase Type - Negative<br>API Endpoint - /caseservice/map");
 
 		Map<String, Object> ReqBody = new HashMap<>();
 		ReqBody.put("case_code", case_code);
@@ -237,7 +237,7 @@ public class RawCase extends BaseClass {
 		Response response = RestAssured.given()
 				.body(ReqBody)
 				.header("content-type","application/json" )
-				.when().post(EndPoint.DOCUMENTMAP);
+				.when().post(EndPoint.CASEFILEMAP);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -260,4 +260,6 @@ public class RawCase extends BaseClass {
 	}
 	}
 }
+
+
 

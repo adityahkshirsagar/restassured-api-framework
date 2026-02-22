@@ -25,7 +25,7 @@ public class UploadHelper extends BaseClass{
 
 		public ValidatableResponse upload_BankStatement(String casecode, String document_category, String document_type , String file_path,String name) throws Throwable
 		{
-			setBaseURI("documents");
+			setBaseURI("casefiles");
 
 			String token="Bearer <REDACTED_TOKEN>";
 			String query3="update case_applicant_detail set name='"+name+"' where case_code='"+casecode+"'";
@@ -44,14 +44,14 @@ public class UploadHelper extends BaseClass{
 					.multiPart("document_type", document_type)
 					.multiPart("source","LOS")
 					.header("Authorization", token)
-					.when().post(EndPoint.DOCUMENTUPLOAD).then().log().all();
+					.when().post(EndPoint.CASEFILEUPLOAD).then().log().all();
 			return response;
 
 		}
 
 		public ValidatableResponse upload_BankStatement_password(String casecode, String document_category, String document_type , String file_path,String name,String password) throws Throwable
 		{
-			setBaseURI("documents");
+			setBaseURI("casefiles");
 
 			String token="Bearer <REDACTED_TOKEN>";
 			String query3="update case_applicant_detail set name='"+name+"' where case_code='"+casecode+"'";
@@ -71,14 +71,14 @@ public class UploadHelper extends BaseClass{
 					.multiPart("source","LOS")
 					.multiPart("metadata","{\"password\":\""+password+"\"}")
 					.header("Authorization", token)
-					.when().post(EndPoint.DOCUMENTUPLOAD).then().log().all();
+					.when().post(EndPoint.CASEFILEUPLOAD).then().log().all();
 			return response;
 
 		}
 
 		public Response uploadCaseFile(String documentCategory, String documentType, String file_path, String casecode,String name,String userId) throws Throwable{
 
-			setBaseURI("documents");
+			setBaseURI("casefiles");
 			File  file= new File(file_path);
 
 	        Response response = given().contentType("multipart/form-data")
@@ -89,8 +89,9 @@ public class UploadHelper extends BaseClass{
 	                .multiPart("user_id",userId)
 	                .multiPart("source","LOS")
 	                .multiPart("json", "{\"key\":\"value\", \"metadata\":\"" + documentType + "\"}")
-	                .when().post(EndPoint.DOCUMENTUPLOAD);
+	                .when().post(EndPoint.CASEFILEUPLOAD);
 	        return response;
 	    }
 }
+
 

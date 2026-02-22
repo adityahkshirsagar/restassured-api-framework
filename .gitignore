@@ -1,7 +1,4 @@
 /target/
-# Ignore the specific class file 
-src/main/java/GenericUtilities/BaseClass.java
-src/main/java/GenericUtilities/DataBaseUtility.java
 /.github/workflows/build.yml
 
 # ignore specific folder

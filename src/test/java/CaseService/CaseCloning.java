@@ -34,7 +34,7 @@ public class CaseCloning extends BaseClass {
 	public void caseCode_2() throws Throwable
 	{
 
-		    new_case_code=fresh_lead.Fresh_Lead(); // New case_code created to clone document from one case_code to another case_code
+		    new_case_code=fresh_lead.Fresh_Lead();
 	        query_case_applicant_detail = DataBaseUtility.getQuery("query_case_applicant_detail", new_case_code);
 	        String new_lead_code = DataBaseUtility.returnValueByColumnname(query_case_applicant_detail, "customer_code");
 	        String new_mobile_no=DataBaseUtility.returnValueByColumnname(query_case_applicant_detail, "mobile_no");
@@ -61,7 +61,7 @@ public class CaseCloning extends BaseClass {
 					.body(ReqBody)
 					.header("content-type","application/json" )
 					.header("internal-access-token",System.getenv("m2m_token"))
-					.when().post(EndPoint.DOCUMENTCLONNING);
+					.when().post(EndPoint.CASEFILECLONING);
 
 			JsonPath jp = response.jsonPath();
 			String SuccValue = jp.getString("success");
@@ -94,7 +94,7 @@ public class CaseCloning extends BaseClass {
 					.body(ReqBody)
 					.header("content-type","application/json" )
 					.header("internal-access-token",System.getenv("m2m_token") )
-					.when().post(EndPoint.DOCUMENTCLONNING);
+					.when().post(EndPoint.CASEFILECLONING);
 
 			JsonPath jp = response.jsonPath();
 			String SuccValue = jp.getString("success");
@@ -129,7 +129,7 @@ public class CaseCloning extends BaseClass {
 					.body(payload.toString())
 					.header("content-type","application/json" )
 					.header("internal-access-token",System.getenv("m2m_token"))
-					.when().post(EndPoint.DOCUMENTREALLOCATE);
+					.when().post(EndPoint.CASEFILEREALLOCATE);
 
 			JsonPath jp = response.jsonPath();
 			String SuccValue = jp.getString("success");
@@ -146,4 +146,5 @@ public class CaseCloning extends BaseClass {
 	}
 
 }
+
 

@@ -42,4 +42,4 @@ mvn test -Dsurefire.suiteXmlFiles=testng.xml
 - All sensitive values are placeholder-based (`<REDACTED_...>` or environment variables).
 - URLs in repository files use non-routable placeholders like `https://example.invalid`.
 - Sanitization policy is documented in `SANITIZATION_CONTEXT.md`.
-
+- Runtime API calls in this repository target sanitized showcase paths (for example, `/caseservice/...`) and are not intended to hit real environments.

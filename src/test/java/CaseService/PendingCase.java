@@ -43,13 +43,13 @@ public class PendingCase extends BaseClass {
 	 */
 	@Test(dependsOnMethods = "GetcaseCode", priority=2)
 	public void GET_PendingDocument() throws Throwable {
-		setBaseURI("documents");
+		setBaseURI("casefiles");
 
 		ListnerClass.reportLog("Description - Get all pending documents for the Propritorship application <br>Testcase Type - Positive<br>API Endpoint - /pending");
 
 		Response response = RestAssured.given()
 				.param("case_code", case_code)
-				.when().get(EndPoint.DOCUMENTPENDING);
+				.when().get(EndPoint.CASEFILEPENDING);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -64,7 +64,7 @@ public class PendingCase extends BaseClass {
 	@Test (dependsOnMethods = "GetcaseCode", priority=3)
 	public void GET_PendingDocPartnership() throws Throwable {
 
-		setBaseURI("documents");
+		setBaseURI("casefiles");
 
 		ListnerClass.reportLog("Description - Get all pending documents for the Partnership application <br>Testcase Type - Positive<br>API Endpoint - /pending");
 		String update_query_legStat_partnership = DataBaseUtility.getQuery("update_query_legStat_partnership", case_code);
@@ -72,7 +72,7 @@ public class PendingCase extends BaseClass {
 
 		Response response = RestAssured.given()
 				.param("case_code", case_code)
-				.when().get(EndPoint.DOCUMENTPENDING);
+				.when().get(EndPoint.CASEFILEPENDING);
 
 		JsonPath jp = response.jsonPath();
 		String PedingDocForPartnership_1 = jp.getString("data.pendingList.key");
@@ -100,7 +100,7 @@ public class PendingCase extends BaseClass {
 	@Test (dependsOnMethods = "GetcaseCode", priority=4)
 	public void GET_PendingDocPvtLtd() throws Throwable {
 
-		setBaseURI("documents");
+		setBaseURI("casefiles");
 
 		ListnerClass.reportLog("Description - Get all pending documents for the Pvt. Ltd. application <br>Testcase Type - Positive<br>API Endpoint - /pending");
 
@@ -109,7 +109,7 @@ public class PendingCase extends BaseClass {
 
 		Response response = RestAssured.given()
 				.param("case_code", case_code)
-				.when().get(EndPoint.DOCUMENTPENDING);
+				.when().get(EndPoint.CASEFILEPENDING);
 
 		JsonPath jp = response.jsonPath();
 		String PedingDocForPvtLtd_1 = jp.getString("data.pendingList.key");
@@ -143,7 +143,7 @@ public class PendingCase extends BaseClass {
 	@Test  (dependsOnMethods = "GetcaseCode", priority=5)
 	public void GET_PendingDocAmt20L() throws Throwable {
 
-		setBaseURI("documents");
+		setBaseURI("casefiles");
 
 		ListnerClass.reportLog("Description - Get all pending documents for the case amount more than 20L application <br>Testcase Type - Positive<br>API Endpoint - /pending");
 		String update_query_caseAmt_2100000 = DataBaseUtility.getQuery("update_query_caseAmt_2100000", case_code);
@@ -151,7 +151,7 @@ public class PendingCase extends BaseClass {
 
 		Response response = RestAssured.given()
 				.param("case_code", case_code)
-				.when().get(EndPoint.DOCUMENTPENDING);
+				.when().get(EndPoint.CASEFILEPENDING);
 
 		JsonPath jp = response.jsonPath();
 		String PedingDocForPvtLtd_1 = jp.getString("data.pendingList.key");
@@ -184,7 +184,7 @@ public class PendingCase extends BaseClass {
 	@Test  (dependsOnMethods = "GetcaseCode", priority=6)
 	public void GET_PendingDocForFemale() throws Throwable {
 
-		setBaseURI("documents");
+		setBaseURI("casefiles");
 
 		ListnerClass.reportLog("Description - Get all pending documents for the case amount more than 20L application <br>Testcase Type - Positive<br>API Endpoint - /pending");
 		String update_query_legStat_propritorship = DataBaseUtility.getQuery("update_query_legStat_propritorship", case_code);
@@ -194,7 +194,7 @@ public class PendingCase extends BaseClass {
 
 		Response response = RestAssured.given()
 				.param("case_code", case_code)
-				.when().get(EndPoint.DOCUMENTPENDING);
+				.when().get(EndPoint.CASEFILEPENDING);
 
 		JsonPath jp = response.jsonPath();
 		String PedingDocForPvtLtd_1 = jp.getString("data.pendingList.key");
@@ -226,13 +226,13 @@ public class PendingCase extends BaseClass {
 	@Test(dependsOnMethods = "GetcaseCode",priority=7)
 	public void GET_PendingDocumentV1() throws Throwable {
 
-		setBaseURI("documents");
+		setBaseURI("casefiles");
 
 		ListnerClass.reportLog("Description - Get all pending documents for the application consumed at CJP's <br>Testcase Type - Positive<br>API Endpoint - v1/pending");
 		Response response = RestAssured.given()
 				.multiPart("caseCode",case_code)
 				.header("internal-access-token",System.getenv("m2m_token"))
-				.when().post(EndPoint.DOCUMENTPENDINGV1);
+				.when().post(EndPoint.CASEFILEPENDINGV1);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -253,7 +253,7 @@ public class PendingCase extends BaseClass {
 	@Test(dependsOnMethods = "GetcaseCode", priority=8)
 	public void GET_PendingDoc_1() throws Throwable {
 
-		setBaseURI("documents");
+		setBaseURI("casefiles");
 
 		ListnerClass.reportLog("Description - Get all pending documents for the application <br>Testcase Type - Positive<br>API Endpoint - /pending");
 
@@ -261,7 +261,7 @@ public class PendingCase extends BaseClass {
 				.param("case_code", case_code)
 				.param("list_type", "post_sanction")
 				.param("source", "LOS")
-				.when().get(EndPoint.DOCUMENTPENDING);
+				.when().get(EndPoint.CASEFILEPENDING);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -282,7 +282,7 @@ public class PendingCase extends BaseClass {
 	@Test(dependsOnMethods = "GetcaseCode", priority=9)
 	public void GET_PendingDoc_2() throws Throwable {
 
-		setBaseURI("documents");
+		setBaseURI("casefiles");
 
 		ListnerClass.reportLog("Description - Get all pending documents for the application with list_type - normal and colender - epimoney <br>Testcase Type - Positive<br>API Endpoint - /pending");
 
@@ -291,7 +291,7 @@ public class PendingCase extends BaseClass {
 				.param("list_type", "normal")
 				.param("colender", "Epimoney")
 				.param("source", "LOS")
-				.when().get(EndPoint.DOCUMENTPENDING);
+				.when().get(EndPoint.CASEFILEPENDING);
 
 		JsonPath jp = response.jsonPath();
 		String SuccessMessage = jp.getString("success");
@@ -312,12 +312,12 @@ public class PendingCase extends BaseClass {
 	@Test(dependsOnMethods = "GetcaseCode", priority=10)
 	public void GET_PendingHardcopy() throws Throwable {
 
-		setBaseURI("documents");
+		setBaseURI("casefiles");
 
 		ListnerClass.reportLog("Description - Pending hardcopy document API<br>Testcase Type - Positive<br>API Endpoint - /hardcopy/{caseCode}");
 
 		Response response = RestAssured.given()
-	            .when().get(EndPoint.DOCUMENTPENDINGHARDCOPY,case_code);
+	            .when().get(EndPoint.CASEFILEPENDINGHARDCOPY,case_code);
 
 		if(response.statusCode()==200)
 		{
@@ -334,9 +334,9 @@ public class PendingCase extends BaseClass {
 	 */
 
 	@Test(dependsOnMethods = "GetcaseCode", priority=11)
-	public void POST_DocumentIgnore() throws Throwable {
+	public void POST_CASEFILEIGNORE() throws Throwable {
 
-		setBaseURI("documents");
+		setBaseURI("casefiles");
 		ListnerClass.reportLog("Description - Get all pending ignore documents with bank_statement for the application<br>Testcase Type - Positive<br>API Endpoint - /pending");
 
 		query_case_document_ignore = DataBaseUtility.getQuery("query_case_document_ignore", case_code);
@@ -380,7 +380,7 @@ public class PendingCase extends BaseClass {
 		payload.add("metadata", metadata);
 
 		Response response = RestAssured.given().contentType("application/json").body(payload.toString())
-				.when().post(EndPoint.DOCUMENTIGNORE);
+				.when().post(EndPoint.CASEFILEIGNORE);
 
 		String ignore_doc_case_code = databaseutil
 				.returnValueByColumnname(query_case_document_ignore, "case_code");
@@ -411,7 +411,7 @@ public class PendingCase extends BaseClass {
 	@Test(dependsOnMethods = "GetcaseCode", priority=12)
 	public void GET_PendingSummary_1() throws Throwable {
 
-		setBaseURI("documents");
+		setBaseURI("casefiles");
 
 		ListnerClass.reportLog("Description - Pending summary API verification with list_type - post_sanction and source - CJP<br>Testcase Type - Positive<br>API Endpoint - /pending/summary");
 
@@ -419,7 +419,7 @@ public class PendingCase extends BaseClass {
 	            .param("case_code", case_code)
 				.param("list_type", "post_sanction")
 				.param("source", "CJP")
-	            .when().get(EndPoint.DOCUMENTPENDINGSUMMARY);
+	            .when().get(EndPoint.CASEFILEPENDINGSUMMARY);
 
 		if(response.statusCode()==200)
 		{
@@ -437,7 +437,7 @@ public class PendingCase extends BaseClass {
 	@Test(dependsOnMethods = "GetcaseCode", priority=13)
 	public void GET_PendingSummary_2() throws Throwable {
 
-		setBaseURI("documents");
+		setBaseURI("casefiles");
 
 		ListnerClass.reportLog("Description - Pending summary API verification with list_type - normal and source - LOS<br>Testcase Type - Positive<br>API Endpoint - /pending/summary");
 
@@ -445,7 +445,7 @@ public class PendingCase extends BaseClass {
 	            .param("case_code", case_code)
 				.param("list_type", "normal")
 				.param("source", "LOS")
-	            .when().get(EndPoint.DOCUMENTPENDINGSUMMARY);
+	            .when().get(EndPoint.CASEFILEPENDINGSUMMARY);
 
 		if(response.statusCode()==200)
 		{
@@ -455,4 +455,5 @@ public class PendingCase extends BaseClass {
 	}
 	}
 }
+
 

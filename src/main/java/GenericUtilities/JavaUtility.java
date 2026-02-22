@@ -57,7 +57,7 @@ public class JavaUtility {
 	{
 
 		String lastPart = faker.regexify("[0-9]{5}");
-		String firstFive = faker.regexify("[A-Z]{5}"); // Generate first five letters
+		String firstFive = faker.regexify("[A-Z]{5}");
 		return "PEN-"+firstFive+"-000-SEP24-"+lastPart;
 	}
 
@@ -233,16 +233,16 @@ public class JavaUtility {
 
 	public static String randomFirstName() {
         String firstName = faker.name().firstName();
-        return firstName; // Combine first and last names
+        return firstName;
     }
 	public static String randomMiddleName() {
         String lastName = faker.name().firstName();
-        return lastName; // Combine first and last names
+        return lastName;
     }
 
 	public static String randomLastName() {
         String lastName = faker.name().lastName();
-        return lastName; // Combine first and last names
+        return lastName;
     }
 
 	public static String randome4Num()
@@ -326,3 +326,5 @@ public class JavaUtility {
 		return ("ENA"+mandate+"PH");
 	}
 }
+
+

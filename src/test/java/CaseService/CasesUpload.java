@@ -60,10 +60,10 @@ public class CasesUpload extends BaseClass{
 	 * @throws Throwable
 	 */
 
-	@Test(dataProvider ="documentUploadDataProvider",priority = 1)//, dependsOnMethods = "Fresh_Lead")
+	@Test(dataProvider = "caseUploadDataProvider", priority = 1)
 	public void POST_UploadDocument(String documentCategory, String documentType, String filepath) throws Throwable {
 
-		 ListnerClass.reportLog("Description - Upload documnets <br>Testcase Type - Positive<br>API Endpoint - /documentservice/");
+		 ListnerClass.reportLog("Description - Upload documnets <br>Testcase Type - Positive<br>API Endpoint - /caseservice/");
 		 query_kyc = DataBaseUtility.getQuery("query_kyc", case_code);
 		 query_res_address_proof = DataBaseUtility.getQuery("query_res_address_proof", case_code);
 		 query_company_kyc = DataBaseUtility.getQuery("query_company_kyc", case_code);
@@ -109,7 +109,7 @@ public class CasesUpload extends BaseClass{
 	/**
 	 * This method is used as data provider for document upload API.
 	 */
-	@DataProvider(name = "documentUploadDataProvider")
+	@DataProvider(name = "caseUploadDataProvider")
 	public Object[][] documentData() {
 	    return new Object[][] {
 	        {"kyc", "pan_personal", Filepath.pan},
@@ -122,10 +122,10 @@ public class CasesUpload extends BaseClass{
 	 * This method is used to upload existing documents with Case Upload API and verify failure response.
 	 * @throws Throwable
 	 */
-	@Test(dataProvider ="documentUploadDataProvider",priority = 2)//,dependsOnMethods = "Fresh_Lead")
+	@Test(dataProvider = "caseUploadDataProvider", priority = 2)
 	public void POST_UploadDocumentNeg_1(String documentCategory, String documentType, String filepath) throws Throwable {
 
-		ListnerClass.reportLog("Description - Upload document with existing set of Case category, Case type and File Name <br>Testcase Type - Negative<br>API Endpoint - /documentservice/");
+		ListnerClass.reportLog("Description - Upload document with existing set of Case category, Case type and File Name <br>Testcase Type - Negative<br>API Endpoint - /caseservice/");
 		Response response = uploadHelper.uploadCaseFile(documentCategory,documentType,filepath,case_code, "923809", "CJP");
 
 		JsonPath jp = response.jsonPath();
@@ -141,10 +141,10 @@ public class CasesUpload extends BaseClass{
 	 * @throws Throwable
 	 */
 
-	@Test (priority = 3)//, dependsOnMethods = "Fresh_Lead")
+	@Test(priority = 3)
 	public void POST_UploadDocumentNeg_2() throws Throwable {
 
-		ListnerClass.reportLog("Description - Upload remaining documnets with Case type not matching with Case Category with config<br>Testcase Type - Negative<br>API Endpoint - /documentservice/");
+		ListnerClass.reportLog("Description - Upload remaining documnets with Case type not matching with Case Category with config<br>Testcase Type - Negative<br>API Endpoint - /caseservice/");
 
 		Response response = uploadHelper.uploadCaseFile("res_address_proof","itr_returns",Filepath.Aadhar,case_code, "923809", "CJP");
 
@@ -158,7 +158,7 @@ public class CasesUpload extends BaseClass{
 
 	@Test(priority = 4)
 	public void POST_UploadDocument_ContractValidation() throws Throwable {
-		ListnerClass.reportLog("Description - Validate upload response contract fields <br>Testcase Type - Contract<br>API Endpoint - /documentservice/");
+		ListnerClass.reportLog("Description - Validate upload response contract fields <br>Testcase Type - Contract<br>API Endpoint - /caseservice/");
 		Response response = uploadHelper.uploadCaseFile("kyc", "pan_personal", Filepath.pan, case_code, "923809", "CJP");
 		JsonPath jp = response.jsonPath();
 		Assert.assertEquals(response.statusCode(), 200, "Expected upload success status");
@@ -168,7 +168,7 @@ public class CasesUpload extends BaseClass{
 
 	@Test(priority = 5)
 	public void POST_UploadDocumentNeg_3_InvalidCategoryBoundary() throws Throwable {
-		ListnerClass.reportLog("Description - Validate invalid category boundary handling <br>Testcase Type - Negative Boundary<br>API Endpoint - /documentservice/");
+		ListnerClass.reportLog("Description - Validate invalid category boundary handling <br>Testcase Type - Negative Boundary<br>API Endpoint - /caseservice/");
 		StringBuilder invalidCategoryBuilder = new StringBuilder();
 		for (int i = 0; i < 130; i++) {
 			invalidCategoryBuilder.append('x');
@@ -181,8 +181,8 @@ public class CasesUpload extends BaseClass{
 
 	@Test(priority = 6)
 	public void POST_UploadDocumentNeg_Auth_InvalidToken() throws Throwable {
-		ListnerClass.reportLog("Description - Validate unauthorized behavior for upload with invalid token <br>Testcase Type - Security<br>API Endpoint - /documentservice/");
-		setBaseURI("documents");
+		ListnerClass.reportLog("Description - Validate unauthorized behavior for upload with invalid token <br>Testcase Type - Security<br>API Endpoint - /caseservice/");
+		setBaseURI("casefiles");
 		File file = new File(Filepath.pan);
 		Response response = RestAssured.given()
 				.contentType("multipart/form-data")
@@ -193,9 +193,11 @@ public class CasesUpload extends BaseClass{
 				.multiPart("user_id", "CJP")
 				.multiPart("source", "LOS")
 				.header("Authorization", "Bearer invalid_token")
-				.when().post(EndPoint.DOCUMENTUPLOAD);
+				.when().post(EndPoint.CASEFILEUPLOAD);
 		Assert.assertTrue(response.statusCode() == 401 || response.statusCode() == 403,
 				"Expected 401/403 for invalid token");
 	}
 }
+
+
 
