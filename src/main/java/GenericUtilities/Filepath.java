@@ -1,8 +1,8 @@
 package GenericUtilities;
 
-public interface Filepath 
+public interface Filepath
 {
-	 String QAPropertiesPath="./src/test/resources/qa.properties";  
+	 String QAPropertiesPath="./src/test/resources/qa.properties";
 	 String DBQueryfilePath="./src/test/resources/DB.Query";
 	 String BankStatementFilePath="./src/test/resources/Files/BS.pdf";
 	 String BankStatementFilePath1="./src/test/resources/Files/BS.pdf";
@@ -42,6 +42,6 @@ public interface Filepath
      String VCIP="./src/test/resources/Files/VCIP Reports.pdf";
      String bulklead_file="./src/test/resources/Files/bulk.csv";
      String invalid_doc="./src/test/resources/Files/BS.pdf";
-     
-	 
+
 }
+

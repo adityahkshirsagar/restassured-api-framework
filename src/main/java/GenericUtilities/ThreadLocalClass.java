@@ -4,7 +4,7 @@ import com.aventstack.extentreports.ExtentTest;
 
 import PropertyFileConfig.PropertyFileReaders;
 
-public class ThreadLocalClass 
+public class ThreadLocalClass
 {
     private static final ThreadLocal<ExtentTest> test = new ThreadLocal<>();
     private static final ThreadLocal<ExtentTest> testLevel = new ThreadLocal<>();
@@ -25,7 +25,7 @@ public class ThreadLocalClass
     public static void removeTest() {
         test.remove();
     }
-    
+
     public static PropertyFileReaders getpropfile() { return propfile.get(); }
     public static ExtentTest getTestLevel() {
         return testLevel.get();
@@ -94,7 +94,5 @@ public class ThreadLocalClass
         token.remove();
     }
 
-	
-	
-	
 }
+

@@ -4,12 +4,12 @@ import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
 
 public class MongoDBUtility {
-	
+
 	static	String Mongo_username="<REDACTED_USERNAME>";
 	static  String Mongo_password="<REDACTED_PASSWORD>";
-	 private static final String CONNECTION_STRING = 
+	 private static final String CONNECTION_STRING =
 			 "mongodb+srv://example.invalid";
-	 private static final String CONNECTION_STRING1 = 
+	 private static final String CONNECTION_STRING1 =
 			 "mongodb+srv://example.invalid";
 
 		    /**
@@ -28,7 +28,7 @@ public class MongoDBUtility {
 		            return null;
 		        }
 		    }
-		    
+
 		    public static MongoClient connectToMongoDB1() {
 		        try {
 		            MongoClient mongoClient = MongoClients.create(CONNECTION_STRING1);
@@ -101,5 +101,6 @@ public class MongoDBUtility {
 		            return null;
 		        }
 		    }
-	
+
 }
+

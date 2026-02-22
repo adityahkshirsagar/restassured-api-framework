@@ -5,8 +5,7 @@ package GenericUtilities;
  */
 
 public interface EndPoint {
-	
-	
+
     String CREATELEAD = "/applicationlayer/v1/term-case/application";
     String CREATEUNIFIEDLEAD="/unified/lead";
     String SAVEBANKDETAIL = "/unified/caseapplication/{case_code}/bankaccount";
@@ -162,7 +161,7 @@ public interface EndPoint {
     String POSTSANCTIONCOMMUNICATION_NOTEDOWNLOAD = "/psc/sanction/download";
     String ELIGIBILITY_FINALELIGIBILITY = "/eligibility/v2";
     String SHARELEAD_UPDATEFIELD = "/applicationstatus/api/updateField";
-    String SHARELEAD_UPDATEIPSTATUS= "/los/application/updateIPStatus"; 
+    String SHARELEAD_UPDATEIPSTATUS= "/los/application/updateIPStatus";
     String PARTNERINTEGRATION_EVALUATECHECKPOINT= "/state/v1/case/state";
     String POSTSANCTIONCOMMUNICATION_SENDSANCTIONV2FLOW="/psc/v2/sanction/{case_code}/send";
     String POSTSANCTIONCOMMUNICATION_FETCHTEMPLETEIDANDVERSIONID="/psc/fetchtemplates/{case_code}";
@@ -189,7 +188,7 @@ public interface EndPoint {
     String FETCH_LIST_PARTNER="/utility/partners-list?cjp_link_disabled={cjp_link_disabled}";
     String CJP_Link_With_Associated_Partner="/partner/generate-cjp-url";
     String CDN_upload="/utility/cdn-upload";
-    String CIBIL_APPLICANT="/bureau-app-layer/v2/bureau/getCibil?async=false&type=Applicant&force=true"; 
+    String CIBIL_APPLICANT="/bureau-app-layer/v2/bureau/getCibil?async=false&type=Applicant&force=true";
     String DIALERLOGIN="/api/dialerLogin";
     String OPC_TOKEN="/api/opc/token/";
     String CREATE_LMS_CLIENT="/los/createLMSClientAndApplication";
@@ -213,7 +212,7 @@ public interface EndPoint {
     String FUZZYNAME_FLAG="/app-bank/v1/banking/name-match/update";
     String DOCUMENTSERVICE = "/documentservice/{case_code}/classification/{document_code}";
     String REPAYMENT_DETAIL="/lms/repayment-details-client/{client_code}";
-    String CIBIL_MOCK="/bureau-app-layer/v2/bureau/getCibil?async=false&type=Applicant&force=true&mode=HARD_CIBIL_PULL"; 
+    String CIBIL_MOCK="/bureau-app-layer/v2/bureau/getCibil?async=false&type=Applicant&force=true&mode=HARD_CIBIL_PULL";
     String DISBURSAL_CALLBACK="/utility/callback/disbursal";
     String LMSAPPROVE="/lms/v1/approved/case/";
     String LMSAPPROVESAVING="/lms/v1/approved/savingsaccounts/";
@@ -224,7 +223,7 @@ public interface EndPoint {
     String FETCHBRE="/scoringservice/bre/epimoney?case_code=";
     String GSTIN = "/gst/iris/getGstDetails/";
     String COLLECTION="/epimoney/api/collection";
-    String GUARANTOR_CIBIL_MOCK="/bureau-app-layer/v2/bureau/getCibil?async=false&type=Guarantors&force=true&mode=HARD_CIBIL_PULL"; 
+    String GUARANTOR_CIBIL_MOCK="/bureau-app-layer/v2/bureau/getCibil?async=false&type=Guarantors&force=true&mode=HARD_CIBIL_PULL";
     String REPAYMENT_DETAIL_CLM="/epimoney/api/case/{casecode}/disbursement/repayment_schedule";
     String AGREEMENT_CLM="/middleware/v2/lead/originator/{casecode}/colender/{colender_id}/share/pool/agreement";
     String POSTPOLICY="/applicationlayer/v1/post-disbursement/policy";
@@ -240,3 +239,4 @@ public interface EndPoint {
     String CKYC_SERVICE = "/ckyc/v1/ckyc";
 
 }
+

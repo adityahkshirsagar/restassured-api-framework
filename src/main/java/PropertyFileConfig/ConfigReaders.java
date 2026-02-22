@@ -1,6 +1,6 @@
 package PropertyFileConfig;
 
-public interface ConfigReaders 
+public interface ConfigReaders
 {
 
 	String getQADBURL() throws Throwable;
@@ -10,20 +10,5 @@ public interface ConfigReaders
     String getName(String fullname) throws Throwable;
     String getKey(String key) throws Throwable;
 
-	
-	
-	
-	
-	
-	
-
-	
-
-	
-
-	
-	
-	
-	
-	
 }
+
